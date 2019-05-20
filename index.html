@@ -1,0 +1,187 @@
+<html>
+    <head>
+        <title>JQuery plugins practice</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+       
+        <h1>Autocomplete</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="ui-widget">
+                      <label for="tags">Tags: </label>
+                       <input id="tags">
+                     </div>
+ 
+                </div>
+            </div>
+        </div>
+        
+        <h1>Datepicker</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Date: <input type="text" id="datepicker"></p>
+ 
+                </div>
+            </div>
+        </div>
+        
+        <h1>Color Animation</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="toggler">
+                       <div id="effect" class="ui-widget-content ui-corner-all">
+                         <h3 class="ui-widget-header ui-corner-all">Animate</h3>
+                        <p>
+                         Etiam libero neque, luctus a, eleifend nec, semper at, lorem. Sed pede. Nulla lorem metus, adipiscing ut, luctus sed, hendrerit vitae, mi.
+                        </p>
+                      </div>
+                       </div>
+ 
+                       <button id="button" class="ui-state-default ui-corner-all">Toggle Effect</button>
+ 
+                </div>
+            </div>
+        </div> 
+     
+        
+     <h1>stop sliding</h1>
+     <div class="container">
+         <div class="row">
+             <div class="col-md-12">
+                 <button id="stop">Stop sliding</button>
+                   <div id="flip">Click to slide down panel</div>
+                    <div id="panel">Hello world!</div>
+
+             </div>
+         </div>
+     </div>
+        
+     <h1>Callback</h1>
+     <div class="container">
+         <div class="row">
+             <div class="col-md-12">
+                 <button>Hide</button>
+
+                  <p>This is a paragraph with little content.</p>
+
+             </div>
+         </div>
+     </div>
+     
+     <h1>tilted plugin</h1>
+     <div class="container">
+         <div class="row">
+             <div class="col-md-12">
+                 <div class="main">
+                   <section class="page1">
+                       <img src="images/arial.jpg" alt="aaa">
+                  </section>
+                 <section class="page2">
+                     <img src="images/cold.jpg" alt="aaa">
+                </section>
+                    <img src="images/arial.jpg" alt="aaa">
+               <section class="last-page">
+                    <img src="images/cold.jpg" alt="aaa">
+               </section>
+               </div>
+             </div>
+         </div>
+     </div>
+        
+     
+        <script src="js/jquery1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.tiltedpage-scroll.js"></script>
+        <script src="js/script.js"></script>
+<script>
+  $( function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+    
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+  <script>
+  $( function() {
+    var state = true;
+    $( "#button" ).on( "click", function() {
+      if ( state ) {
+        $( "#effect" ).animate({
+          backgroundColor: "#aa0000",
+          color: "#fff",
+          width: 500
+        }, 1000 );
+      } else {
+        $( "#effect" ).animate({
+          backgroundColor: "#fff",
+          color: "#000",
+          width: 240
+        }, 1000 );
+      }
+      state = !state;
+    });
+  } );
+ </script>
+ <script> 
+$(document).ready(function(){
+  $("#flip").click(function(){
+    $("#panel").slideToggle(2000);
+  });
+  $("#stop").click(function(){
+    $("#panel").stop();
+  });
+});
+</script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("p").hide("slow", function(){
+      alert("The paragraph is now hidden");
+    });
+  });
+});
+</script>
+<script> $(".main").tiltedpage_scroll({
+    sectionContainer: "> section",     
+    angle: 50,                         
+    opacity: true,                     
+    scale: true,                       
+    outAnimation: true                 
+  });
+    </script>
+</body>
+</html>
